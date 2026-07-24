@@ -15,7 +15,7 @@ dispatcher through the neutral `IGuiDispatcher` and `IGuiTimer` contracts.
 
 This package pulls in:
 
-- `GuiDispatcher.Sharp` 1.1 or later, below 2.0;
+- `GuiDispatcher.Sharp` 1.1.1 or later, below 2.0;
 - `Microsoft.Maui.Core` 10.x.
 
 ## Usage
@@ -63,7 +63,20 @@ instead of returning a task that can never complete.
 The adapter targets neutral `net10.0`; MAUI applications can consume it from
 their Android, iOS, Mac Catalyst, Windows, and Tizen target frameworks.
 
-## Releasing
+## NuGet publishing
+
+Publishing uses NuGet Trusted Publishing from GitHub Actions, without a stored
+API key. Configure this policy on nuget.org before pushing the first release
+tag:
+
+| Field | Value |
+|-------|-------|
+| Repository owner | `buchmiet` |
+| Repository | `GuiDispatcher.Sharp.Maui` |
+| Workflow file | `publish-nuget.yml` |
+| Environment | `production` |
+
+### Releasing
 
 Releases are cut by pushing a `vX.Y.Z` tag. Before tagging:
 
@@ -73,3 +86,5 @@ Releases are cut by pushing a `vX.Y.Z` tag. Before tagging:
 3. Commit both changes.
 4. Tag and push: `git tag vX.Y.Z && git push origin vX.Y.Z`.
 
+For a coordinated release of the complete package family, follow the
+[family release guide](https://github.com/buchmiet/GuiDispatcher.Sharp/blob/main/RELEASING_FAMILY.md).

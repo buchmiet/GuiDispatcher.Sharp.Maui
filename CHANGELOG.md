@@ -17,3 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MauiGuiTimer` and cancelable one-shot scheduling backed by MAUI timers.
 - Tests running against a dedicated dispatcher thread and timer implementation.
 
+### Changed
+
+- Requires `GuiDispatcher.Sharp` 1.1.1 or later, below 2.0.

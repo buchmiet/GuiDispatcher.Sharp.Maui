@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GuiDispatcher.Sharp" Version="[1.1.0,2.0.0)" />
+    <PackageReference Include="GuiDispatcher.Sharp" Version="[1.1.1,2.0.0)" />
     <PackageReference Include="Microsoft.Maui.Core" Version="[10.0.0,11.0.0)" />
   </ItemGroup>
 
@@ -35,4 +35,3 @@
   </ItemGroup>
 
 </Project>
-
