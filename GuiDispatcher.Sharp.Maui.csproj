@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>GuiDispatcher.Sharp.Maui</RootNamespace>
+
+    <PackageId>GuiDispatcher.Sharp.Maui</PackageId>
+    <Version>1.1.1</Version>
+    <Authors>Lukasz Buchmiet</Authors>
+    <Description>.NET MAUI 10 implementation of GuiDispatcher.Sharp for .NET 10.</Description>
+    <PackageTags>dispatcher;ui;gui;thread;timer;maui;cross-platform</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/buchmiet/GuiDispatcher.Sharp.Maui</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/buchmiet/GuiDispatcher.Sharp.Maui</PackageProjectUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GuiDispatcher.Sharp" Version="[1.1.0,2.0.0)" />
+    <PackageReference Include="Microsoft.Maui.Core" Version="[10.0.0,11.0.0)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="tests/**" />
+    <None Remove="tests/**" />
+    <EmbeddedResource Remove="tests/**" />
+    <Content Remove="tests/**" />
+  </ItemGroup>
+
+</Project>
+

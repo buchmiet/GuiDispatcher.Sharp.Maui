@@ -1,0 +1,65 @@
+name: Publish NuGet
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Verify csproj version matches tag
+        run: |
+          CSPROJ_VERSION=$(grep -oPm1 '(?<=<Version>)[^<]+' GuiDispatcher.Sharp.Maui.csproj)
+          if [ "$CSPROJ_VERSION" != "$VERSION" ]; then
+            echo "::error::Tag version ($VERSION) does not match <Version> in GuiDispatcher.Sharp.Maui.csproj ($CSPROJ_VERSION)"
+            exit 1
+          fi
+
+      - name: Verify CHANGELOG.md has an entry for this version
+        run: |
+          if ! grep -qE "^## \[$VERSION\]" CHANGELOG.md; then
+            echo "::error::CHANGELOG.md has no '## [$VERSION]' entry"
+            exit 1
+          fi
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore GuiDispatcher.Sharp.Maui.csproj
+
+      - name: Build
+        run: dotnet build GuiDispatcher.Sharp.Maui.csproj --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test tests/GuiDispatcher.Sharp.Maui.Tests/GuiDispatcher.Sharp.Maui.Tests.csproj --configuration Release --verbosity normal
+
+      - name: Pack
+        run: dotnet pack GuiDispatcher.Sharp.Maui.csproj --configuration Release --no-build --output ./artifacts /p:PackageVersion=$VERSION
+
+      - name: NuGet login
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: buchmiet
+
+      - name: Push to NuGet
+        run: dotnet nuget push "./artifacts/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
+
