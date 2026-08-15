@@ -15,7 +15,7 @@ dispatcher through the neutral `IGuiDispatcher` and `IGuiTimer` contracts.
 
 This package pulls in:
 
-- `GuiDispatcher.Sharp` 1.1.1 or later, below 2.0;
+- `GuiDispatcher.Sharp` 1.1.2 or later, below 2.0;
 - `Microsoft.Maui.Core` 10.x.
 
 ## Usage

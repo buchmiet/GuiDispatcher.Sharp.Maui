@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-08-15
+
+### Changed
+
+- Raised the `GuiDispatcher.Sharp` dependency floor to `[1.1.2,2.0.0)` for
+  coordinated family releases.
+
 ## [1.1.1] - 2026-07-24
 
 ### Added

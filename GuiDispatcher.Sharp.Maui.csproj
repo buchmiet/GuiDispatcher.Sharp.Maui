@@ -7,7 +7,7 @@
     <RootNamespace>GuiDispatcher.Sharp.Maui</RootNamespace>
 
     <PackageId>GuiDispatcher.Sharp.Maui</PackageId>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <Authors>Lukasz Buchmiet</Authors>
     <Description>.NET MAUI 10 implementation of GuiDispatcher.Sharp for .NET 10.</Description>
     <PackageTags>dispatcher;ui;gui;thread;timer;maui;cross-platform</PackageTags>
@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GuiDispatcher.Sharp" Version="[1.1.1,2.0.0)" />
+    <PackageReference Include="GuiDispatcher.Sharp" Version="[1.1.2,2.0.0)" />
     <PackageReference Include="Microsoft.Maui.Core" Version="[10.0.0,11.0.0)" />
   </ItemGroup>
 
